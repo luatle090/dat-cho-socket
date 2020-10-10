@@ -207,6 +207,7 @@ public class ClientDatCho {
             //gửi yêu cầu
             PrintWriter output = new PrintWriter(connection.getOutputStream());
             output.println(request);
+            output.flush();
 
             BufferedReader buff = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 
@@ -217,7 +218,7 @@ public class ClientDatCho {
                 JButton btnViTri = viTriMap.get(viTri);
                 
                 //loại bỏ button đã disable ra khỏi map
-                viTriMap.remove(viTri);
+                //viTriMap.remove(viTri);
                 btnViTri.setEnabled(false);
             }
             output.close();
@@ -231,6 +232,7 @@ public class ClientDatCho {
             
             try {
                 while(isRunning){
+                    
                     refreshChoNgoi();
                     Thread.sleep(30000);
                 }
